@@ -8,13 +8,13 @@ $index = (int) readline("Индекс = ");
 
 
 if (is_integer($index)) {
-  if (isset($arr[$index]) !== false) {
+  if (isset($arr[$index])) {
     if ($arr[$index] === 0) {
       unset($arr[$index]);
       $arr[$index] = 0;
     } else {
       if ($arr[$index] < 0) {
-        $arr[$index] = $arr[$index] * -1;
+        $arr[$index] *= -1;
       } else {
         if ($index == count($arr)-1) {
           echo "Элемент с индексом $index последний в массиве\n";
