@@ -42,18 +42,18 @@ $days = [
  'es' => ['lunes', 'martes', 'miércoles', 'jueves', 'viernes', 'sábado', 'domingo'],
 ];
 
-$false = true;
-while ($false) {
+$enter = true;
+while ($enter) {
   $lang = readline('Введите язык: ');
-  if (isset($days[$lang])) $false = false;
+  if (isset($days[$lang])) $enter = false;
   else echo "Элемент не существует. Попробуйте ещё раз.\n";
 }
 
 echo "Неделя наоборот на языке $lang:\n" . implode(', ', array_reverse($days[$lang])) . "\n\n";
 
-while (!$false) {
+while (!$enter) {
   $index = readline('Введите номер дня недели: ');
-  if (isset($days[$lang][$index-1])) $false = true;
+  if (isset($days[$lang][$index-1])) $enter = true;
   else echo "Неверный индекс. Попробуйте ещё раз.\n";
 }
 
