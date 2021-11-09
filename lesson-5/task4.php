@@ -5,8 +5,11 @@ include "translator.php" ;
 
 // Задание 4
 
-echo implode(', ', translate_months($months, readline('Язык перевода: '))) . "\n";
+$lang = readline('Язык перевода: ');
+echo implode(', ', translate_months($months, $lang)) . "\n";
 
-echo translate_month($months, readline('Язык перевода: '), readline('Номер месяца: ')) . "\n";
+$lang = readline('Язык перевода: ');
+$id_month = readline('Номер месяца: ');
+echo translate_month($months, $lang, $id_month) . "\n";
 
 

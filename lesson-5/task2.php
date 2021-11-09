@@ -5,11 +5,7 @@ include "functions.php" ;
 // Задание 2
 
 function true_word_form ($count = 0, array $forms = ['число', 'числа', 'чисел']) {
-  while (check_int($count)) {
-    echo "Неверно введено количество. Попробуйте ещё раз.\n";
-    $count = readline('Количество: ');
-  }
-
+  if (check_int($count)) return "Ошибка - $count\n";
   if (in_array($count, range(11,19)) || in_array(substr($count, -1), range(5,9)) || (substr($count, -1) == 0))
     $result = $forms[2];
   elseif (substr($count, -1) == 1)
@@ -20,13 +16,19 @@ function true_word_form ($count = 0, array $forms = ['число', 'числа',
   return $result;
 }
 
-// echo true_word_form(readline("Количество: "), [readline("1 "), readline("2 "), readline("5 ")]) . "\n";
+$count = readline('Количество: ');
+while (check_int($count)) {
+  echo "Неверно введено количество. Попробуйте ещё раз.\n";
+  $count = readline('Количество: ');
+}
+echo "Введите формы склонения необходимого слова:\n";
+$forms = [readline("1 "), readline("2 "), readline("5 ")];
+
+echo true_word_form($count, $forms) . "\n";
+
 
 function numtotext ($sum) {
-  while (check_int($sum, 1, 999999)) {
-    echo "Некорректная сумма. Попробуйте ещё раз.\n";
-    $sum = readline('Сумма: ');
-  }
+  if (check_int($sum, 1, 999999)) return "Ошибка - $sum\n";
 
   $thousands = ['тысяча', 'тысячи', 'тысяч'];
 
@@ -111,4 +113,11 @@ function numtotext ($sum) {
   return $result;
 }
 
-echo numtotext(readline('Введите число: '));
+
+$sum = readline('Введите число: ');
+while (check_int($sum, 1, 999999)) {
+  echo "Некорректная сумма. Попробуйте ещё раз.\n";
+  $sum = readline('Введите число: ');
+}
+
+echo numtotext($sum);

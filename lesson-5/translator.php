@@ -7,7 +7,7 @@ function translate_months (array $months, string $lang = 'en') {
   if (isset($months[$lang]))
     $translate_months = $months[$lang];
   else
-    $translate_months = array_fill(0, 12, NULL);
+    return [];
 
   return $translate_months;
 }
