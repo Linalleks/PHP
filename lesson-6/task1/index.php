@@ -1,10 +1,8 @@
 <?php
 
-if (isset($_GET['url'])) {
-  $file = ($_GET['url'] == '') ? 'home' : $_GET['url'];
-  $file = (file_exists($file .'.php')) ? $file : '404';
-  header('Location: ' . $file . '.php');
-}
+  // $file = ($_GET['url'] == '') ? 'home' : $_GET['url'];
+  $file = (!isset($_GET['url']) || $_GET['url'] == '') ? 'home.php' : $_GET['url'] . '.php';
+  $file = (file_exists($file)) ? $file : '404.php';
 ?>
 <!DOCTYPE html>
 <html lang="ru">
@@ -15,9 +13,12 @@ if (isset($_GET['url'])) {
   <title>Document</title>
 </head>
 <body>
-  <a href="<?=pathinfo($_SERVER['PHP_SELF'],PATHINFO_DIRNAME) . '?url=home' ?>">home</a>
-  <a href="<?=pathinfo($_SERVER['PHP_SELF'],PATHINFO_DIRNAME) . '?url=about' ?>">about</a>
-  <a href="<?=pathinfo($_SERVER['PHP_SELF'],PATHINFO_DIRNAME) . '?url=page' ?>">page</a>
-  <a href="<?=pathinfo($_SERVER['PHP_SELF'],PATHINFO_DIRNAME) . '?url=contact' ?>">contact</a>
+  <header>
+    <a href="<?=pathinfo($_SERVER['PHP_SELF'],PATHINFO_DIRNAME) . '?url=home' ?>">home</a>
+    <a href="<?=pathinfo($_SERVER['PHP_SELF'],PATHINFO_DIRNAME) . '?url=about' ?>">about</a>
+    <a href="<?=pathinfo($_SERVER['PHP_SELF'],PATHINFO_DIRNAME) . '?url=page' ?>">page</a>
+    <a href="<?=pathinfo($_SERVER['PHP_SELF'],PATHINFO_DIRNAME) . '?url=contact' ?>">contact</a>
+  </header>
+  <?php include($file); ?>
 </body>
 </html>
