@@ -1,12 +1,5 @@
 <?php
-
-session_start();
-
-if (isset($_SESSION['POSTDATA']))
-  $_POST = $_SESSION['POSTDATA'];
-
 require 'config.php';
-
 ?>
 
 <!DOCTYPE html>

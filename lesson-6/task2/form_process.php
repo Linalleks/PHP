@@ -1,8 +1,5 @@
 <?php
 
-session_start();
-$_SESSION['POSTDATA'] = $_POST;
-
 require 'config.php';
 
 if (empty(array_diff($errors, ['', NULL]))) {
@@ -11,6 +8,8 @@ if (empty(array_diff($errors, ['', NULL]))) {
   file_put_contents('ads/логин_из_формы.txt', $current);
 }
 
-header('Location: ' . $_SERVER['HTTP_REFERER']);
+$req = http_build_query(compact('login', 'message'));
+
+header('Location: index.php?' . $req);
 
 die;
